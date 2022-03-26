@@ -1,18 +1,53 @@
 ﻿using System;
+using Lab04_TicTacToe.Classes;
+
 
 namespace Lab04_TicTacToe
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
-        static void StartGame()
-        {
-            // TODO: Setup your game. Create a new method that creates your players and instantiates the game class. Call that method in your Main method.
-            // You are requesting a Winner to be returned, Determine who the winner is output the celebratory message to the correct player. If it's a draw, tell them that there is no winner. 
+            Console.WriteLine("Welcome to tic-tac-toe Game");
+            StartGame();
 
         }
+
+        static void StartGame()
+        {
+            // TODO: Instantiate your players DONE
+            Console.Write("Please enter name for Player 1: ");
+            string playerOneName = Console.ReadLine();
+            Console.Write("Please enter name for Player 2: ");
+            string playerTwoName = Console.ReadLine();
+
+            Player p1 = new Player
+            {
+                Name = playerOneName,
+                Marker = "X",
+                IsTurn = true
+            };
+
+            Player p2 = new Player
+            {
+                Name = playerTwoName,
+                Marker = "O",
+                IsTurn = false
+            };
+
+            // Create the Game 
+            Game newGame = new Game(p1, p2);
+
+            // Play the Game 
+            Player winner = newGame.Play();
+
+            // Output the winner 
+            if (winner == null)
+                Console.WriteLine("It is draw!");
+            else
+                Console.WriteLine($"{winner.Name} is the winner.");
+        }
+
+
     }
 }
