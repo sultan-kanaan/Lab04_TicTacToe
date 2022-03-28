@@ -7,12 +7,14 @@ namespace TestXO
 {
     public class UnitTest1
     {
+        // just create new opject
         static Player p1 = new Player
         {
             Name = "sultan",
             Marker = "X",
             IsTurn = true
         };
+
 
         static Player p2 = new Player
         {
